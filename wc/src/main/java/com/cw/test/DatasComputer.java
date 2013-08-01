@@ -8,6 +8,11 @@ import com.cw.test.model.Datas;
 import com.cw.test.model.Signal;
 import com.cw.test.model.Signaux;
 
+/**
+ * 
+ * @author Bellevue
+ *
+ */
 public class DatasComputer {
 
 	/*

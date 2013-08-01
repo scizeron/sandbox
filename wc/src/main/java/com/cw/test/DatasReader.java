@@ -21,8 +21,9 @@ public interface DatasReader {
 	public static final String SEP_LIGNE_SIGNAL = " ";
 	
 	/**
-	 * @param <T>1
-	 * @param args
+	 * 
+	 * @return
+	 * @throws Exception
 	 */
 	public abstract Datas read() throws Exception;
 

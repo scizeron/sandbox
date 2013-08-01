@@ -1,5 +1,10 @@
 package com.cw.test.model;
 
+/**
+ * 
+ * @author Bellevue
+ *
+ */
 public class Signal {
 
 	String antenneId;
@@ -21,5 +26,4 @@ public class Signal {
 	public void setValue(int value) {
 		this.value = value;
 	}
-
 }

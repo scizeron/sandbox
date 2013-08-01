@@ -1,5 +1,10 @@
 package com.cw.test;
 
+/**
+ * 
+ * @author Bellevue
+ *
+ */
 public class DataExeption extends RuntimeException {
 
 	/**

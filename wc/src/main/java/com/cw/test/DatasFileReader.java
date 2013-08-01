@@ -23,9 +23,12 @@ import com.google.common.io.LineProcessor;
  */
 public class DatasFileReader implements DatasReader {
 	
-	
 	private File file;
 	
+	/**
+	 * 
+	 * @param file
+	 */
 	public DatasFileReader(File file) {
 		this.file = file;
 	}

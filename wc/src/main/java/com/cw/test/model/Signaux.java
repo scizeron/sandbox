@@ -3,6 +3,11 @@ package com.cw.test.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author Bellevue
+ *
+ */
 public class Signaux {
 
 	List<Signal> values;
@@ -18,5 +23,4 @@ public class Signaux {
 	public List<Signal> getValues() {
 		return this.values;
 	}
-
 }

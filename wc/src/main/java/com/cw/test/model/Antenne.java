@@ -1,5 +1,10 @@
 package com.cw.test.model;
 
+/**
+ * 
+ * @author Bellevue
+ *
+ */
 public class Antenne {
 
 	String id;
