@@ -9,7 +9,11 @@ import org.junit.Test;
 
 import com.cw.test.model.Datas;
 import com.cw.test.model.Signaux;
-
+/**
+ * 
+ * @author Bellevue
+ *
+ */
 public class DatasFileReaderTestCase {
 
 	/**

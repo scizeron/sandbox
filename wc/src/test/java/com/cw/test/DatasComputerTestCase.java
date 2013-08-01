@@ -10,7 +10,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import com.cw.test.model.Datas;
-
+/**
+ * 
+ * @author Bellevue
+ *
+ */
 public class DatasComputerTestCase {
 
 	@Test public void compute() throws Exception {
