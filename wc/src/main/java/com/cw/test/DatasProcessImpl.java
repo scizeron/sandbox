@@ -1,10 +1,11 @@
 package com.cw.test;
 
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.cw.test.model.Antenne;
 import com.cw.test.model.Datas;
+import com.cw.test.model.Result;
 import com.cw.test.model.Signal;
 import com.cw.test.model.Signaux;
 
@@ -13,13 +14,18 @@ import com.cw.test.model.Signaux;
  * @author Bellevue
  *
  */
-public class DatasComputer {
+public class DatasProcessImpl implements DatasProcessor {
 
 	/*
 	 * 
 	 */
-	public void compute(Datas datas, PrintWriter printWriter) throws Exception {
+	/* (non-Javadoc)
+	 * @see com.cw.test.DatasComputer#compute(com.cw.test.model.Datas)
+	 */
+	@Override
+	public List<Result> process(Datas datas) throws Exception {
 		List<Signaux> listSignaux = datas.getSignaux();
+		List<Result> results = new ArrayList<Result>();
 		
 		for (Signaux signaux : listSignaux) {
 			float cumulIntensite = 0;
@@ -33,10 +39,12 @@ public class DatasComputer {
 				cumulPositionIntensiteY += signal.getValue()*antenne.getY();
 			}
 			
-			int x = Math.round(cumulPositionIntensiteX / cumulIntensite);
-			int y = Math.round(cumulPositionIntensiteY / cumulIntensite);
-			printWriter.println(String.format("%d %d", x, y));
-			printWriter.flush();
+			Result result=  new Result();
+			result.setX(Math.round(cumulPositionIntensiteX / cumulIntensite));
+			result.setY(Math.round(cumulPositionIntensiteY / cumulIntensite));
+			results.add(result);
 		}
+		
+		return results;
 	}
 }

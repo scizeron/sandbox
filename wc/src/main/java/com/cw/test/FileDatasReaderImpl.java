@@ -20,7 +20,7 @@ import com.cw.test.model.Signaux;
  * @author ByTel
  * 
  */
-public class DatasFileReader implements DatasReader {
+public class FileDatasReaderImpl implements DatasReader {
 
 	private File file;
 
@@ -28,7 +28,7 @@ public class DatasFileReader implements DatasReader {
 	 * 
 	 * @param file
 	 */
-	public DatasFileReader(File file) {
+	public FileDatasReaderImpl(File file) {
 		this.file = file;
 	}
 
@@ -86,10 +86,8 @@ public class DatasFileReader implements DatasReader {
 
 					Antenne antenne = new Antenne();
 					antenne.setId(id);
-					antenne.setX(parseUnsignedInt(antennesAttributes.get(1),
-							line));
-					antenne.setY(parseUnsignedInt(antennesAttributes.get(2),
-							line));
+					antenne.setX(Integer.parseInt(antennesAttributes.get(1)));
+					antenne.setY(Integer.parseInt(antennesAttributes.get(2)));
 					datas.addAntenne(antenne);
 
 				} else {
@@ -102,12 +100,9 @@ public class DatasFileReader implements DatasReader {
 
 					// signaux par antenne
 					// <ID1> <G1> <ID2> <G2> <ID3> <G3>
-					List<String> strSignaux = Arrays.asList(StringUtils.split(
-							line, SEP_LIGNE_SIGNAL));
-					if (strSignaux == null
-							|| strSignaux.size() != NB_ATTRIBUTS_PAR_LIGNE_SIGNAL) {
-						throw new RuntimeException("ligne signaux (" + index
-								+ ") mal formattée : " + line);
+					List<String> strSignaux = Arrays.asList(StringUtils.split(line, SEP_LIGNE_SIGNAL));
+					if (strSignaux == null || strSignaux.size() != NB_ATTRIBUTS_PAR_LIGNE_SIGNAL) {
+						throw new RuntimeException("ligne signaux (" + index + ") mal formattée : " + line);
 					}
 
 					Iterator<String> itSignaux = strSignaux.iterator();
@@ -131,23 +126,5 @@ public class DatasFileReader implements DatasReader {
 		}
 
 		return datas;
-	}
-
-	/**
-	 * 
-	 * @param value
-	 * @param line
-	 * @return
-	 */
-	private int parseUnsignedInt(String value, String line) {
-		int intValue = Integer.parseInt(value);
-		if (intValue < 0) {
-			throw new DataExeption(
-					"La postion '"
-							+ value
-							+ "' ne respecte pas le format attendu, entier > 0 uniquement : "
-							+ line);
-		}
-		return intValue;
 	}
 }

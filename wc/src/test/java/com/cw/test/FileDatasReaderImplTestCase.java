@@ -14,14 +14,14 @@ import com.cw.test.model.Signaux;
  * @author Bellevue
  *
  */
-public class DatasFileReaderTestCase {
+public class FileDatasReaderImplTestCase {
 
 	/**
 	 * 
 	 * @throws Exception
 	 */
 	@Test public void read() throws Exception {
-		Datas datas = new  DatasFileReader(new File("src/test/resources/inputfileok.txt")).read();
+		Datas datas = new  FileDatasReaderImpl(new File("src/test/resources/inputfileok.txt")).read();
 		Assert.assertNotNull(datas);
 		Assert.assertEquals(4, datas.getNbAntennes());
 		Assert.assertEquals(4, datas.getAntennes().size());
@@ -36,7 +36,7 @@ public class DatasFileReaderTestCase {
 	 * @throws Exception
 	 */
 	@Test(expected=FileNotFoundException.class) public void readFichierIntrouvable() throws Exception {
-		new DatasFileReader(new File("src/test/resources/introuvable.txt")).read();
+		new FileDatasReaderImpl(new File("src/test/resources/introuvable.txt")).read();
 	}
 	
 	/**
@@ -44,7 +44,7 @@ public class DatasFileReaderTestCase {
 	 * @throws Exception
 	 */
 	@Test(expected=DataExeption.class) public void readError1() throws Exception {
-		new DatasFileReader(new File("src/test/resources/error1.txt")).read();
+		new FileDatasReaderImpl(new File("src/test/resources/error1.txt")).read();
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public class DatasFileReaderTestCase {
 	 * @throws Exception
 	 */
 	@Test(expected=DataExeption.class) public void readError2() throws Exception {
-		new DatasFileReader(new File("src/test/resources/error2.txt")).read();
+		new FileDatasReaderImpl(new File("src/test/resources/error2.txt")).read();
 	}
 	
 	/**
@@ -60,7 +60,7 @@ public class DatasFileReaderTestCase {
 	 * @throws Exception
 	 */
 	@Test(expected=DataExeption.class) public void readError3() throws Exception {
-		new DatasFileReader(new File("src/test/resources/error3.txt")).read();
+		new FileDatasReaderImpl(new File("src/test/resources/error3.txt")).read();
 	}
 	
 	/**
@@ -68,6 +68,6 @@ public class DatasFileReaderTestCase {
 	 * @throws Exception
 	 */
 	@Test(expected=DataExeption.class) public void readError4() throws Exception {
-		new DatasFileReader(new File("src/test/resources/error4.txt")).read();
+		new FileDatasReaderImpl(new File("src/test/resources/error4.txt")).read();
 	}
 }

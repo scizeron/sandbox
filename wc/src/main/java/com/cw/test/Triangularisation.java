@@ -4,16 +4,13 @@
 package com.cw.test;
 
 import java.io.File;
-import java.io.PrintWriter;
-
-import com.cw.test.model.Datas;
 
 /**
  * 
  * @author Bellevue
  *
  */
-public class Compute {
+public class Triangularisation {
 
 	/**
 	 * @param args
@@ -28,21 +25,17 @@ public class Compute {
 		} else {
 			System.err.println("bad arguments");
 			usage();
-			exit(1);
+			System.exit(1);
 		}
 		
 		try {
-			DatasReader reader = new DatasFileReader(file);
-			Datas datas = reader.read();
-			
-			DatasComputer datasComputer = new DatasComputer();
-			datasComputer.compute(datas, new PrintWriter(System.out));
-			
-			exit(0);
+			new SimpleDatasWriterImpl().write(
+					new DatasProcessImpl().process(
+							new FileDatasReaderImpl(file).read()));
 			
 		} catch(Exception exception) {
 			exception.printStackTrace();
-			exit(1);
+			System.exit(1);
 		}
 	}
 
@@ -53,15 +46,5 @@ public class Compute {
 		System.out.println("Usage : Calcul de triangularisation");
 		System.out.println("arguments :");
 		System.out.println("<fichier> : ficher contenant les données de calcul");
-	}
-	
-	/**
-	 * 
-	 * @param code
-	 */
-	private static void exit(int code) {
-		if (!"true".equals(System.getProperty("debug.mode"))) {
-			System.exit(code);
-		}
 	}
 }
